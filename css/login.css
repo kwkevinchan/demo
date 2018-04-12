@@ -1,0 +1,7 @@
+.login_div{
+	position: fixed;
+	top:20%;
+	left:35%;
+	border:1px solid #CFD8DC;
+	padding: 5px;
+}

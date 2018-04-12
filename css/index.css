@@ -1,0 +1,28 @@
+.navbar{
+	background-color:#CFD8DC;
+}
+.header{
+	background-color:#ffffff;
+}
+.main{
+	border-width: 10px;
+	border-color: #000000;
+}
+@media only screen and (max-width: 769px) {
+	.sidelist{
+		display: none;
+	}
+}
+.footer{
+	background-color: #212121 ;
+	text-align: center;
+	color:#ffffff;
+}
+a{
+	text-decoration: none;
+	color:#000000;
+
+}
+a:hover{
+	text-decoration: underline;
+}
