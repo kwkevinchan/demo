@@ -47,4 +47,10 @@ else{
 
 print $msg;
 
+$ss_username = isset($_SESSION["username"]) ? $_SESSION["username"] : "";
+$ss_authority = isset($_SESSION["authority"]) ? $_SESSION["authority"] : "";
+
+print $ss_username;
+print $ss_authority;
+
 ?>

@@ -1,7 +1,33 @@
 <?php
-
+session_start();
 include'config.php';
 
+$ss_username = isset($_SESSION["username"]) ? $_SESSION["username"] : "";
+$ss_authority = isset($_SESSION["authority"]) ? $_SESSION["authority"] : "";
+
+$login_link = '';
+
+if($ss_authority===""){
+	$login_check = "尚未登陸";
+	$login_li = '
+		<li class="nav-item active">
+					<a class="nav-link" href="login.php">login<span class="sr-only">(current)</span></a>
+		</li>
+	';
+}
+else{
+	$login_check = "已登入，". $ss_username. "歡迎";
+	$login_link = '
+		<li class="nav-item active">
+			<a class="nav-link" href="user_edit.php?username='.$ss_username.'">修改帳號</a>
+		</li>
+	';
+	$login_li = '
+		<li class="nav-item active">
+			<a class="nav-link" href="logout.php">logout<span class="sr-only">(current)</span></a>
+		</li>
+	';
+}
 
 $html = <<< HEREDOC
 <!DOCTYPE html>
@@ -44,9 +70,11 @@ $html = <<< HEREDOC
 		</div>
 		<div class="flex-row-reverse">
 			<ul class="navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="login.php">login<span class="sr-only">(current)</span></a>
+				<li class="nav-item" style="padding:10px">
+					{$login_check}
 				</li>
+				{$login_link}
+				{$login_li}
 			</ul>
 		</div>
 	</nav>
@@ -61,7 +89,11 @@ $html = <<< HEREDOC
 		</ul>
 		<div class="main col-md-8">
 			<a href="table_install.php">建立資料表</a>
-			內容內容內容內容內容內容內容內容內容內容內容</div>
+			內容內容內容內容內容內容內容內容內容內容內容<br />
+			{$login_check}<br />
+			權限:{$ss_authority}<br />
+			使用者:{$ss_username}<br />
+		</div>
 	</section>
 
 	<footer class="footer">footer</footer>
@@ -75,5 +107,7 @@ $html = <<< HEREDOC
 HEREDOC;
 
 echo $html;
+
+
 
 ?>
